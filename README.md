@@ -9,7 +9,7 @@ This is a set of sample projects for Link to Liberty, demonstrating how you can 
 
 ## Deploying the sample
 1. Import the projects into CICS Explorer using File -> Import -> General -> Existing projects into workspace. 
-- If using the egit client, you can just clone the repo and tick the button to import all projects.
+  - If using the egit client, you can just clone the repo and tick the button to import all projects.
 2. Change the name of the JVMSERVER in the .warbundle file to a suitable value for your installation.
 3. Export the bundle project to zFS by selecting 'Export Bundle project to z/OS Unix File System' from the contxt menu.
 4. Ensure the `cicsts:link-1.0` feature is present in server.xml and the JVMSERVER is ENABLED.
