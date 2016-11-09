@@ -1,6 +1,9 @@
 # cics-java-liberty-link
 Sample CICS Java program showing use of the com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty
 
+## License
+This project is licensed under [Apache License Version 2.0](LICENSE).   
+
 ## Contents
 This is a set of sample Eclipse projects for Link to Liberty, demonstrating how you can annotate a POJO packaged in a WAR in a Liberty JVM server, to allow it be called from a CICS program.
 
