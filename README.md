@@ -33,5 +33,5 @@ You can pass a channel with a container:
 
 `CECI LINK PROG(HELLOWLP) CHANNEL(CHAN)`
 
-## Found out more
+## Find out more
 For more information on invoking Java EE applications in a Liberty JVM server from CICS programs see [this article](https://developer.ibm.com/cics/2016/11/02/link-to-liberty/).
