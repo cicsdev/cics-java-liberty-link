@@ -10,6 +10,15 @@ import com.ibm.cics.server.InvalidRequestException;
 import com.ibm.cics.server.Task;
 import com.ibm.cics.server.invocation.CICSProgram;
 
+/* Licensed Materials - Property of IBM                               */
+/*                                                                    */
+/* SAMPLE                                                             */
+/*                                                                    */
+/* (c) Copyright IBM Corp. 2016 All Rights Reserved                   */       
+/*                                                                    */
+/* US Government Users Restricted Rights - Use, duplication or        */
+/* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
+/*                                                                    */
 /**
  * Sample code to be invoked by EXEC CICS LINK.
  */
@@ -17,10 +26,10 @@ public class HelloLiberty {
 
 	/**
 	 * Prints a greeting message to STDOUT. When invoked with a text container
-	 * called NAME on the current channel. that name is used. Otherwise, the
+	 * called NAME on the current channel, that name is used. Otherwise, the
 	 * user ID of the CICS task is used.
 	 */
-	@CICSProgram("HELLOWLP")
+	@CICSProgram("HELLOWLP")  // This method can be invoked by EXEC LINK PROGRAM(HELLOWLP)
 	public void printMessage() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Hello ");
