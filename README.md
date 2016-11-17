@@ -35,7 +35,8 @@ You can pass a channel with a container:
 `CECI PUT CONTAINER(NAME) CHAR FROM(MATTHEW) CHANNEL(CHAN)`
 
 `CECI LINK PROG(HELLOWLP) CHANNEL(CHAN)`
-(ensure both commands are entered in the same CECI session.
+
+(ensure both commands are entered in the same CECI session)
 
 ## Find out more
 For more information on invoking Java EE applications in a Liberty JVM server from CICS programs see [this article](https://developer.ibm.com/cics/2016/11/02/link-to-liberty/).
