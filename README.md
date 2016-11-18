@@ -1,5 +1,5 @@
 # cics-java-liberty-link
-Sample CICS Java program showing use of the com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty
+Sample CICS Java program showing use of the com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty.
 
 ## License
 This project is licensed under [Apache License Version 2.0](LICENSE).   
@@ -11,7 +11,7 @@ This is a set of sample Eclipse projects for Link to Liberty, demonstrating how 
 - projects/com.ibm.cics.server.examples.wlp.link.bundle - CICS bundle project
 
 ## Prerequisites
-- CICS TS V5.3 (or later) with APAR PI63005
+- CICS TS V5.3 with APAR PI63005, or later
 - A configured Liberty JVM server
 - Java SE 1.7 or later on the z/OS system
 - Java SE 1.7 or later on the workstation
@@ -32,6 +32,7 @@ You can use CECI to invoke the sample program:
 and look for output in the STDOUT location for the JVMSERVER.
 
 You can pass a channel with a container:
+
 `CECI PUT CONTAINER(NAME) CHAR FROM(MATTHEW) CHANNEL(CHAN)`
 
 `CECI LINK PROG(HELLOWLP) CHANNEL(CHAN)`
@@ -39,4 +40,4 @@ You can pass a channel with a container:
 (ensure both commands are entered in the same CECI session)
 
 ## Find out more
-For more information on invoking Java EE applications in a Liberty JVM server from CICS programs see [this article](https://developer.ibm.com/cics/2016/11/02/link-to-liberty/).
+For more information on invoking Java EE applications in a Liberty JVM server from CICS programs see [this article](https://developer.ibm.com/cics/2016/11/14/link-to-liberty-now-available-in-cics-ts-v5-3/).
