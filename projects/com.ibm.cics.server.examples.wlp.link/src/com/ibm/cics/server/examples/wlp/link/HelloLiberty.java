@@ -29,7 +29,7 @@ public class HelloLiberty {
 	 * called NAME on the current channel, that name is used. Otherwise, the
 	 * user ID of the CICS task is used.
 	 */
-	@CICSProgram("HELLOWLP")  // This method can be invoked by EXEC LINK PROGRAM(HELLOWLP)
+	@CICSProgram("HELLOWLP")  // This method can be invoked by EXEC CICS LINK PROGRAM(HELLOWLP)
 	public void printMessage() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Hello ");
@@ -50,6 +50,5 @@ public class HelloLiberty {
 			e.printStackTrace();
 			Task.getTask().abend("OHNO");
 		}
-
 	}
 }
