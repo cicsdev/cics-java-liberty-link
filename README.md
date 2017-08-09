@@ -29,13 +29,15 @@ This is a set of sample Eclipse projects for Link to Liberty, demonstrating how 
 ## Trying out the sample
 You can use CECI to invoke the sample program:
 `CECI LINK PROGRAM(HELLOWLP)`
-and look for output in the STDOUT location for the JVMSERVER.
+and look for output in the MSGUSR DD card of the CICS log or the JVMServer output
 
 You can pass a channel with a container:
 
 `CECI PUT CONTAINER(NAME) CHAR FROM(MATTHEW) CHANNEL(CHAN)`
 
 `CECI LINK PROG(HELLOWLP) CHANNEL(CHAN)`
+
+`CECI GET CONTAINER(OUTPUT) CHAR CHANNEL(CHAN)`
 
 (ensure both commands are entered in the same CECI session)
 
