@@ -11,11 +11,11 @@ This is a set of sample Eclipse projects for Link to Liberty, demonstrating how 
 - projects/com.ibm.cics.server.examples.wlp.link.bundle - CICS bundle project
 
 ## Prerequisites
-- CICS TS V5.3 with APAR PI63005, or later
-- A configured Liberty JVM server
-- Java SE 1.7 or later on the z/OS system
-- Java SE 1.7 or later on the workstation
-- CICS Explorer with CICS SDK for Servlet and JSP support
+* CICS TS V5.4 or later
+* Java SE 1.8 on the z/OS system
+* Java SE 1.8 on the workstation
+* Eclipse with the IBM CICS SDK for Java EE, Jakarta EE and Liberty, or any IDE that supports usage of the Maven Central artifact [com.ibm.cics:com.ibm.cics.server.](https://search.maven.org/artifact/com.ibm.cics/com.ibm.cics.server)
+
 
 ## Deploying the sample
 1. Import the projects into CICS Explorer using File -> Import -> General -> Existing projects into workspace. 
