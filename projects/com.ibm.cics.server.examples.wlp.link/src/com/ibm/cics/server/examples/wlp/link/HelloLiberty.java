@@ -46,7 +46,7 @@ public class HelloLiberty {
 			System.out.println(sb.toString());
 		} catch (InvalidRequestException | ContainerErrorException
 				| ChannelErrorException | CCSIDErrorException
-				| CodePageErrorException e) {
+				| CodePageErrorException | LengthErrorException e) {
 			e.printStackTrace();
 			Task.getTask().abend("OHNO");
 		}
