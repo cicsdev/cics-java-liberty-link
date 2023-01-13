@@ -42,7 +42,7 @@ public class HelloLiberty {
 				sb.append(Task.getTask().getUSERID());
 			}
 		} catch (InvalidRequestException | ContainerErrorException | ChannelErrorException | CCSIDErrorException
-				| CodePageErrorException e) {
+				| CodePageErrorException | LengthErrorException e) {
 			e.printStackTrace();
 			Task.getTask().abend("OHNO");
 		}
