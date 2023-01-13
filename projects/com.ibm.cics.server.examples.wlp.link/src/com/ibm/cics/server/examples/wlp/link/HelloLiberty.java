@@ -33,22 +33,21 @@ public class HelloLiberty {
 	public void printMessage() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Hello ");
+		Channel currentChannel = Task.getTask().getCurrentChannel();
 		try {
-			Channel currentChannel = Task.getTask().getCurrentChannel();
 			if (currentChannel != null && currentChannel.getContainer("NAME") != null) {
 				Container nameContainer = currentChannel.getContainer("NAME");
 				sb.append(nameContainer.getString());
 			} else {
 				sb.append(Task.getTask().getUSERID());
 			}
-			sb.append(" from Liberty server ");
-			sb.append(System.getProperty("com.ibm.cics.jvmserver.wlp.server.name"));
-			System.out.println(sb.toString());
-		} catch (InvalidRequestException | ContainerErrorException
-				| ChannelErrorException | CCSIDErrorException
-				| CodePageErrorException | LengthErrorException e) {
+		} catch (InvalidRequestException | ContainerErrorException | ChannelErrorException | CCSIDErrorException
+				| CodePageErrorException e) {
 			e.printStackTrace();
 			Task.getTask().abend("OHNO");
 		}
+		sb.append(" from Liberty server ");
+		sb.append(System.getProperty("com.ibm.cics.jvmserver.wlp.server.name"));
+		System.out.println(sb.toString());
 	}
 }
