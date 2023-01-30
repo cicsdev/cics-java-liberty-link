@@ -42,7 +42,10 @@ public class HelloLiberty {
 				sb.append(Task.getTask().getUSERID());
 			}
 		} catch (InvalidRequestException | ContainerErrorException | ChannelErrorException | CCSIDErrorException
-				| CodePageErrorException | LengthErrorException e) {
+				| CodePageErrorException e) {
+//              If compiling against CICS 5.6 or higher: add "LengthErrorException" as shown in the following commented out lines
+//		} catch (InvalidRequestException | ContainerErrorException | ChannelErrorException | CCSIDErrorException
+//				| CodePageErrorException | LengthErrorException e) {
 			e.printStackTrace();
 			Task.getTask().abend("OHNO");
 		}
