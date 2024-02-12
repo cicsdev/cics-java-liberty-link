@@ -19,7 +19,6 @@ This is a set of sample Eclipse projects for Link to Liberty, demonstrating how 
 ## Deploying the sample
 1. Import the projects into CICS Explorer using File -> Import -> General -> Existing projects into workspace. 
    - If using the egit client, you can just clone the repo and tick the button to import all projects.
-2. If compiling against CICS 5.6 or higher uppate the catch statement in class HelloLiberty to add ***LengthErrorException***
 2. Change the name of the JVMSERVER in the .warbundle file from DFHWLP to the name of the JVMSERVER resource defined in CICS. 
 3. Export the bundle project to zFS by selecting 'Export Bundle project to z/OS Unix File System' from the context menu.
 4. Ensure the `cicsts:link-1.0` feature is present in server.xml and the JVMSERVER is ENABLED.
