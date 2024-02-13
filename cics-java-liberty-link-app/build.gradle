@@ -40,7 +40,7 @@ dependencies
 {
     // CICS TS V5.5 Maven BOM (as of 19th May 2020)
     compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
-    annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+    //annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
       
     // Don't include JCICS in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")
