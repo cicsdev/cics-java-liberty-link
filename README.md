@@ -1,4 +1,6 @@
 # cics-java-liberty-link
+[![Build](https://github.com/SoftlySplinter/cics-java-liberty-link/actions/workflows/java.yaml/badge.svg)](https://github.com/SoftlySplinter/cics-java-liberty-link/actions/workflows/java.yaml)
+
 Sample CICS Java program showing use of the com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty.
 
 ## License
