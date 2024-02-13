@@ -1,0 +1,3 @@
+rootProject.name = 'cics-java-liberty-link'
+include(':cics-java-liberty-link-app')
+include(':cics-java-liberty-link-bundle')

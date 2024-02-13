@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Note: the HELLOWLP program is automatically defined with the CICSUserGreeter is installed
+into a Liberty JVM server.
+-->
+<cicsdefinitiontransaction name="CJLL" program="HELLOWLP"
+    description="Runs the Enterprise Java CICS program" />

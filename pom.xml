@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ibm.cicsdev</groupId>
+    <artifactId>cics-java-liberty-link</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>CICS Enterprise Java Program</name>
+    <description>Sample CICS Java program showing use of the
+        com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty.</description>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ibm.cics</groupId>
+                <artifactId>com.ibm.cics.ts.bom</artifactId>
+                <version>5.5-20200519131930-PH25409</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>cics-java-liberty-link-app</module>
+        <module>cics-java-liberty-link-bundle</module>
+    </modules>
+</project>

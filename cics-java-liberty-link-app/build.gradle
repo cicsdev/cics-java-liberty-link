@@ -1,0 +1,49 @@
+plugins
+{
+	id 'java'
+	id 'eclipse'
+	id 'war'
+}
+
+group = 'com.ibm.cicsdev'
+archivesBaseName='cics-java-liberty-link'
+version = '1.0.0'
+
+
+// If in Eclipse, add Javadoc to the local project classpath
+eclipse 
+{
+    classpath 
+    {
+        downloadJavadoc = true
+    }
+}
+
+
+repositories 
+{
+    mavenCentral()
+}
+
+java
+{
+    toolchain
+    {
+        languageVersion = JavaLanguageVersion.of(java_version)
+        vendor = JvmVendorSpec.IBM
+        implementation = JvmImplementation.J9
+    }
+}
+
+
+dependencies 
+{
+    // CICS TS V5.5 Maven BOM (as of 19th May 2020)
+    compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+    annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+      
+    // Don't include JCICS in the final build (no need for version because we have BOM)
+    compileOnly("com.ibm.cics:com.ibm.cics.server")
+    compileOnly("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
+    annotationProcessor("com.ibm.cics:com.ibm.cics.server.invocation:6.1")
+}
