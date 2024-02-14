@@ -117,18 +117,18 @@ A template server.xml is provided [here](./etc/config/liberty/server.xml).
 1. Change the name of the JVMSERVER in the .warbundle file of the CICS bundle project from DFHWLP to the name of the JVMSERVER resource defined in CICS. 
 2. Export the bundle project to zFS by selecting 'Export Bundle project to z/OS Unix File System' from the context menu.
 3. Create a bundle definition, setting the bundle directory attribute to the zFS location you just exported to, and install it. 
-4. Check the CICS region for the dynamically created PROGRAM resource HELLOWLP using the PROGRAMS view in CICS Explorer, or the CEMT INQUIRE PROGRAM command.
+4. Check the CICS region for the dynamically created PROGRAM resource HELLOWLP using the Programs view in CICS Explorer, or the CEMT INQUIRE PROGRAM command.
 
 ### Deploying CICS Bundles from Gradle or Maven
 1. Manually upload the ZIP file from the _cics-java-liberty-link-bundle/target_ or _cics-java-liberty-link-bundle/build/distributions_ directory to zFS.
 2. Unzip this ZIP file on zFS (e.g. `${JAVA_HOME}/bin/jar xf /path/to/bundle.zip`).
-3. Create a bundle definition, setting the bundle directory attribute to the zFS location you just extracted to, and install it. 
-4. Check the CICS region for the dynamically created PROGRAM resource HELLOWLP using the PROGRAMS view in CICS Explorer, or the CEMT INQUIRE PROGRAM command.
+3. Create a CICS BUNDLE resource definition, setting the bundle directory attribute to the zFS location you just extracted to, and install it into the CICS region. 
+4. Check the CICS region for the dynamically created PROGRAM resource HELLOWLP using the Programs view in CICS Explorer, or the CEMT INQUIRE PROGRAM command.
 
 ### Deploying with Liberty configuration 
 1. Manually upload the WAR file from the _cics-java-liberty-link-app/target_ or _cics-java-liberty-link-app/build/libs_ directory to zFS.
 2. Add an `<application>` element to the Liberty server.xml to define the web application.
-3. Check the CICS region for the dynamically created PROGRAM resource HELLOWLP using the PROGRAMS view in CICS Explorer, or the CEMT INQUIRE PROGRAM command.
+3. Check the CICS region for the dynamically created PROGRAM resource HELLOWLP using the Programs view in CICS Explorer, or the CEMT INQUIRE PROGRAM command.
 
 
 ## Running
