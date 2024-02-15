@@ -150,8 +150,7 @@ CECI LINK PROG(HELLOWLP) CHANNEL(CHAN)
 
 (ensure both commands are entered in the same CECI session).
 
-## Find out more
-For more information on invoking Java EE applications in a Liberty JVM server from CICS programs see [this article](https://developer.ibm.com/cics/2016/11/14/link-to-liberty-now-available-in-cics-ts-v5-3/).
+Alternatively, the enterprise Java program can be run using the provided `WLPH` transaction.
 
-## License
-This project is licensed under [Apache License Version 2.0](LICENSE).   
+## Find out more
+For more information about invoking Java EE applications in a Liberty JVM server from CICS programs, see [Linking to Java applications in a Liberty JVM server by using the @CICSProgram annotation](https://www.ibm.com/docs/en/cics-ts/6.1?topic=djariljs-linking-java-applications-in-liberty-jvm-server-by-using-cicsprogram-annotation).
