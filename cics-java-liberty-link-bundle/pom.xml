@@ -37,7 +37,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <defaultjvmserver>DFHWLP</defaultjvmserver>
+                    <defaultjvmserver>${jvmserver}</defaultjvmserver>
                     <url>${cmci_url}</url>
                     <username>${cmci_username}</username>
                     <password>${cmci_password}</password>
