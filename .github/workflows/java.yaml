@@ -1,0 +1,66 @@
+name: Build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build-maven:
+    name: Build Maven
+
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        jdk: [8, 11]
+        experimental: [false]
+        include:
+          - jdk: 17
+            experimental: true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.jdk }}
+          distribution: "semeru"
+          cache: maven
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} package
+      - run: |
+             mkdir staging 
+             cp cics-java-liberty-link-app/target/*.war staging
+             cp cics-java-liberty-link-bundle/target/*.zip staging
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cics-java-liberty-link (Maven, Java ${{ matrix.jdk }})
+          path: staging
+
+  build-gradle:
+    name: Build Gradle
+    
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        jdk: [8, 11]
+        experimental: [false]
+        include:
+          - jdk: 17
+            experimental: true
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK ${{ matrix.jdk }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.jdk }}
+        distribution: 'semeru'
+    - uses: gradle/actions/setup-gradle@v3
+      with: 
+        gradle-version: 7.6
+    - name: Build with Gradle
+      run: gradle build -Pjava_version=${{ matrix.jdk }}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ibm.cicsdev</groupId>
+    <artifactId>cics-java-liberty-link</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>cics-java-liberty-link-app</artifactId>
+  <packaging>war</packaging>
+
+  <name>CICS Enterprise Java Program - Application</name>
+
+  <dependencies>
+    <!-- JCICS APIs -->
+    <dependency>
+      <groupId>com.ibm.cics</groupId>
+      <artifactId>com.ibm.cics.server</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.cics</groupId>
+      <artifactId>com.ibm.cics.server.invocation.annotations</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.12.1</version>
+        <configuration>
+            <!-- Enable the CICS Annotation Processor -->
+            <annotationProcessorPaths>
+                <annotationProcessorPath>
+                    <groupId>com.ibm.cics</groupId>
+                    <artifactId>com.ibm.cics.server.invocation</artifactId>
+                    <version>6.1</version>
+                </annotationProcessorPath>
+            </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
