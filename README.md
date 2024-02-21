@@ -12,10 +12,10 @@ This is a set of sample Eclipse projects for Link to Liberty, demonstrating how 
 - [etc/eclipse_projects/com.ibm.cics.server.examples.wlp.link.bundle](./etc/eclipse_projects/com.ibm.cics.server.examples.wlp.link.bundle) - CICS bundle project (CICS Explorer)
 
 ## Prerequisites
-* CICS TS V5.4 or later
+* CICS TS V5.5 or later
 * Java SE 1.8 or later on the workstation
 * Eclipse with the IBM CICS SDK for Java EE, Jakarta EE and Liberty, or any IDE that supports usage of the Maven Central artifact [com.ibm.cics:com.ibm.cics.server.](https://search.maven.org/artifact/com.ibm.cics/com.ibm.cics.server)
-* Either Gradle or Apache Maven on the workstation (optional if using Wrappers)
+* Either Gradle or Apache Maven on the workstation
 
 ## Downloading
 
@@ -52,17 +52,14 @@ Maven (POM.xml):
 
 ## Building 
 
-You can build the sample using an IDE of your choice, or you can build it from the command line. For both approaches, using the supplied Gradle or Maven wrapper is the recommended way to get a consistent version of build tooling. 
-
-On the command line, you simply swap the Gradle or Maven command for the wrapper equivalent, `gradlew` or `mvnw` respectively.
+You can build the sample using an IDE of your choice, or you can build it from the command line. For both approaches, using Gradle or Maven is the recommended way to get a consistent version of build tooling. 
   
-For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify whether you want to build the project with a Wrapper, or a specific version of your chosen build tool.
+For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify a specific version of your chosen build tool.
 
-The required build-tasks are typically `clean bootWar` for Gradle and `clean package` for Maven. Once run, Gradle will generate a WAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
+The required build-tasks are typically `clean build` for Gradle and `clean package` for Maven. Once run, Gradle will generate a WAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
 
-**Note:** When building a WAR file for deployment to Liberty it is good practice to exclude Tomcat from the final runtime artifact. We demonstrate this in the pom.xml with the *provided* scope, and in build.gradle with the *providedRuntime()* dependency.
-
-**Note:** If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
+> [!NOTE]
+> If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
 
 > [!TIP]
 > In Eclipse, Gradle (buildship) is able to fully refresh and resolve the local classpath even if the project was previously updated by Maven. However, Maven (m2e) does not currently reciprocate that capability. If you previously refreshed the project with Gradle, you'll need to manually remove the 'Project Dependencies' entry on the Java build-path of your Project Properties to avoid duplication errors when performing a Maven Project Update.
@@ -72,41 +69,34 @@ The required build-tasks are typically `clean bootWar` for Gradle and `clean pac
 Import the projects into CICS Explorer using File &rarr; Import &rarr; General &rarr; Existing projects into workspace.
 > **Note:** If using the egit client, you can just clone the repo and tick the button to import all projects.
 
-### Gradle Wrapper (command line)
+### Gradle (command line)
 
 Run the following in a local command prompt:
 
-On Linux or Mac:
-
 ```shell
-./gradlew clean bootWar
-```
-On Windows:
-
-```shell
-gradlew.bat clean bootWar
+gradle clean build
 ```
 
-This creates a WAR file inside the `build/libs` directory.
+This creates a WAR file inside the `cics-java-liberty-link-app/build/libs` directory and a CICS bundle ZIP file inside the `cics-java-liberty-link-bundle/build/distribution` directory.
 
-### Maven Wrapper (command line)
+The JVM server the CICS bundle is targeted at is controlled through the `jvmserver` property, defined in the [`gradle.properties`](gradle.properties) file, or in the command line:
+
+```shell
+gradle clean build -Pjvmserver=MYJVMS
+```
+
+### Maven (command line)
 
 
 Run the following in a local command prompt:
 
-On Linux or Mac:
-
 ```shell
-./mvnw clean package
+mvn clean package
 ```
 
-On Windows:
+This creates a WAR file inside the `cics-java-liberty-link-app/target` directory and a CICS bundle zIP file inside the `cics-java-liberty-link-bundle/target` directory.
 
-```shell
-mvnw.cmd clean package
-```
-
-This creates a WAR file inside the `target` directory.
+The JVM server the CICS bundle is targeted at is controlled throught the `jvmserver` property, defined in [`cics-java-liberty-link-bundle/pom.xml`](cics-java-liberty-link-bundle/pom.xm) file under the `defaultjvmserver` configuration property.
 
 ## Deploying to a Liberty JVM server
 
@@ -155,4 +145,4 @@ CECI LINK PROG(HELLOWLP) CHANNEL(CHAN)
 Alternatively, the enterprise Java program can be run using the provided `WLPH` transaction.
 
 ## Find out more
-For more information about invoking Java EE applications in a Liberty JVM server from CICS programs, see [Linking to Java applications in a Liberty JVM server by using the @CICSProgram annotation](https://www.ibm.com/docs/en/cics-ts/6.1?topic=djariljs-linking-java-applications-in-liberty-jvm-server-by-using-cicsprogram-annotation).
+For more information about invoking Java EE applications in a Liberty JVM server from CICS programs, see [Linking to Java applications in a Liberty JVM server by using the @CICSProgram annotation](https://www.ibm.com/docs/en/cics-ts/latest?topic=djariljs-linking-java-applications-in-liberty-jvm-server-by-using-cicsprogram-annotation).
