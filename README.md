@@ -67,7 +67,8 @@ The required build-tasks are typically `clean build` for Gradle and `clean packa
 ### Eclipse
 
 Import the projects into CICS Explorer using File &rarr; Import &rarr; General &rarr; Existing projects into workspace.
-> **Note:** If using the egit client, you can just clone the repo and tick the button to import all projects.
+> [!NOTE]
+> If using the egit client, you can just clone the repo and tick the button to import all projects.
 
 ### Gradle (command line)
 
