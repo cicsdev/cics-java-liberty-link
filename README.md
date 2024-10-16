@@ -20,7 +20,7 @@ This is a set of sample Eclipse projects for Link to Liberty, demonstrating how 
 ## Downloading
 
 - Clone the repository using your IDEs support, such as the Eclipse Git plugin
-- **or**, download the sample as a [ZIP](https://github.com/cicsdev/cics-java-liberty-springboot-jcics/archive/main.zip) and unzip onto the workstation
+- **or**, download the sample as a [ZIP](https://github.com/cicsdev/cics-java-liberty-link/archive/main.zip) and unzip onto the workstation
 
 > [!TIP]
 > Eclipse Git provides an 'Import existing Projects' check-box when cloning a repository.
