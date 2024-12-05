@@ -34,12 +34,12 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.12.1</version>
         <configuration>
-            <!-- Enable the CICS Annotation Processor -->
+            <!-- Enable the CICS Annotation Processor at V6.1 to support Java 11 builds-->
             <annotationProcessorPaths>
                 <annotationProcessorPath>
                     <groupId>com.ibm.cics</groupId>
                     <artifactId>com.ibm.cics.server.invocation</artifactId>
-                    <version>6.1</version>
+                    <version>6.1</version>                    
                 </annotationProcessorPath>
             </annotationProcessorPaths>
         </configuration>
