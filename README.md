@@ -80,10 +80,10 @@ gradle clean build
 
 This creates a WAR file inside the `cics-java-liberty-link-app/build/libs` directory and a CICS bundle ZIP file inside the `cics-java-liberty-link-bundle/build/distribution` directory.
 
-The JVM server the CICS bundle is targeted at is controlled through the `jvmserver` property, defined in the [`gradle.properties`](gradle.properties) file, or in the command line:
+The JVM server the CICS bundle is targeted at is controlled through the `cics.jvmserver` property, defined in the [`cics-java-liberty-link-bundle/build.gradle`](cics-java-liberty-link-bundle/build.gradle) file, or on the command line:
 
 ```shell
-gradle clean build -Pjvmserver=MYJVMS
+gradle clean build -Pcics.jvmserver=MYJVM
 ```
 
 ### Maven (command line)
@@ -97,8 +97,14 @@ mvn clean package
 
 This creates a WAR file inside the `cics-java-liberty-link-app/target` directory and a CICS bundle zIP file inside the `cics-java-liberty-link-bundle/target` directory.
 
-The JVM server the CICS bundle is targeted at is controlled throught the `jvmserver` property, defined in [`cics-java-liberty-link-bundle/pom.xml`](cics-java-liberty-link-bundle/pom.xml) file under the `defaultjvmserver` configuration property.
+If building a CICS bundle ZIP the CICS JVM server name for the WAR bundle part should be modified in the 
+ `cics.jvmserver` property, defined in [`cics-java-liberty-link-bundle/pom.xml`](cics-java-liberty-link-bundle/pom.xml) file under the `defaultjvmserver` configuration property, or alternatively can be set on the command line as follows.
 
+```shell
+ mvn clean package -Dcics.jvmserver=MYJVM
+ ```
+
+The JVM server the CICS bundle is targeted at is controlled throught the
 ## Deploying to a Liberty JVM server
 
 Ensure you have the following features defined in your Liberty server.xml:
