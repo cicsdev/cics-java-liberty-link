@@ -28,15 +28,9 @@
             <plugin>
                 <groupId>com.ibm.cics</groupId>
                 <artifactId>cics-bundle-maven-plugin</artifactId>
-                 <version>1.0.7</version>
+                <version>1.0.7</version>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
+
                 <configuration>
                     <defaultjvmserver>${cics.jvmserver}</defaultjvmserver>
                 </configuration>
