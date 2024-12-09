@@ -15,8 +15,12 @@
         com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty.</description>
 
     <properties>
-        <cics.jvmserver>DFHWLP</cics.jvmserver>
+        <java.version>1.8</java.version>
+        <jvmserver>DFHWLP</jvmserver>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
     </properties>
 
     <dependencyManagement>
@@ -24,7 +28,7 @@
             <dependency>
                 <groupId>com.ibm.cics</groupId>
                 <artifactId>com.ibm.cics.ts.bom</artifactId>
-                 <version>5.5-20200519131930-PH25409</version>
+                <version>5.5-20200519131930-PH25409</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
