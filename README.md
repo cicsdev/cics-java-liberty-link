@@ -104,7 +104,6 @@ If building a CICS bundle ZIP the CICS JVM server name for the WAR bundle part s
  mvn clean package -Dcics.jvmserver=MYJVM
  ```
 
-The JVM server the CICS bundle is targeted at is controlled throught the
 ## Deploying to a Liberty JVM server
 
 Ensure you have the following features defined in your Liberty server.xml:
