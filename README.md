@@ -7,7 +7,7 @@ Sample CICS Java application showing use of the `com.ibm.cics.server.invocation.
 This is a set of sample Eclipse projects for Link to Liberty, demonstrating how you can annotate a POJO packaged in a WAR in a Liberty JVM server, to allow it be called from a CICS program.
 
 - [cics-java-liberty-link-app](./cics-java-liberty-link-app) - Web project
-- [cics-java-liberty-link-bundle](./cics-java-liberty-link-bundle) - CICS bundle project (Maven/Gradle)
+- [cics-java-liberty-link-bundle](./cics-java-liberty-link-bundle) - CICS bundle project with Web app and WLPH transaction as bundle parts. 
 - [etc/config/liberty/server.xml](./etc/config/liberty/server.xml) - Template `server.xml` file.
 - [etc/eclipse_projects/com.ibm.cics.server.examples.wlp.link.bundle](./etc/eclipse_projects/com.ibm.cics.server.examples.wlp.link.bundle) - CICS bundle project (CICS Explorer)
 
@@ -56,7 +56,7 @@ You can build the sample using an IDE of your choice, or you can build it from t
   
 For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify a specific version of your chosen build tool.
 
-The required build-tasks are typically `clean build` for Gradle and `clean package` for Maven. Once run, Gradle will generate a WAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
+The required build-tasks are typically `clean build` for Gradle and `clean verify` for Maven. Once run, Gradle will generate a WAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
 
 > [!NOTE]
 > If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
@@ -92,7 +92,7 @@ gradle clean build -Pcics.jvmserver=MYJVM
 Run the following in a local command prompt:
 
 ```shell
-mvn clean package
+mvn clean verify
 ```
 
 This creates a WAR file inside the `cics-java-liberty-link-app/target` directory and a CICS bundle zIP file inside the `cics-java-liberty-link-bundle/target` directory.
@@ -101,7 +101,7 @@ If building a CICS bundle ZIP the CICS JVM server name for the WAR bundle part s
  `cics.jvmserver` property, defined in [`cics-java-liberty-link-bundle/pom.xml`](cics-java-liberty-link-bundle/pom.xml) file under the `defaultjvmserver` configuration property, or alternatively can be set on the command line as follows.
 
 ```shell
- mvn clean package -Dcics.jvmserver=MYJVM
+ mvn clean verify -Dcics.jvmserver=MYJVM
  ```
 
 ## Deploying to a Liberty JVM server
