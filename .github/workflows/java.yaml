@@ -13,14 +13,9 @@ jobs:
     name: Build Maven
 
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
-        jdk: [8, 11]
-        experimental: [false]
-        include:
-          - jdk: 17
-            experimental: true
+        jdk: [8, 11, 17, 21]
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK ${{ matrix.jdk }}
@@ -44,14 +39,9 @@ jobs:
     name: Build Gradle
     
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
-        jdk: [8, 11]
-        experimental: [false]
-        include:
-          - jdk: 17
-            experimental: true
+        jdk: [8, 11, 17, 21]
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK ${{ matrix.jdk }}

@@ -28,23 +28,11 @@
             <plugin>
                 <groupId>com.ibm.cics</groupId>
                 <artifactId>cics-bundle-maven-plugin</artifactId>
+                <version>1.0.7</version>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
+
                 <configuration>
-                    <defaultjvmserver>${jvmserver}</defaultjvmserver>
-                    <url>${cmci_url}</url>
-                    <username>${cmci_username}</username>
-                    <password>${cmci_password}</password>
-                    <bunddef>CJLLBUND</bunddef>
-                    <csdgroup>CICSDEV</csdgroup>
-                    <cicsplex>${cmci_cicsplex}</cicsplex>
-                    <region>${cmci_region}</region>
+                    <defaultjvmserver>${cics.jvmserver}</defaultjvmserver>
                 </configuration>
             </plugin>
         </plugins>

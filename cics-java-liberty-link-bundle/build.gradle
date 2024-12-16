@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'com.ibm.cics.bundle' version "1.0.3"
+    id 'com.ibm.cics.bundle' version "1.0.7"
 }
 
 dependencies {
@@ -12,7 +12,7 @@ dependencies {
 
 cicsBundle {
     build {
-        defaultJVMServer = jvmserver
+        defaultJVMServer = project.findProperty("cics.jvmserver") ?: "DFHWLP"
     }
 }
 
