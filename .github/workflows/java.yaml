@@ -26,14 +26,6 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} package
-      - run: |
-             mkdir staging 
-             cp cics-java-liberty-link-app/target/*.war staging
-             cp cics-java-liberty-link-bundle/target/*.zip staging
-      - uses: actions/upload-artifact@v4
-        with:
-          name: cics-java-liberty-link (Maven, Java ${{ matrix.jdk }})
-          path: staging
 
   build-gradle:
     name: Build Gradle
