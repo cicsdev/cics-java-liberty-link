@@ -56,8 +56,6 @@ You can build the sample using an IDE of your choice, or you can build it from t
   
 For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* and Maven *m2e* will integrate with the "Run As..." capability, allowing you to specify a specific version of your chosen build tool.
 
-The required build-tasks are typically `clean build` for Gradle and `clean verify` for Maven. Once run, Gradle will generate a WAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
-
 > [!NOTE]
 > If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
 
@@ -70,39 +68,32 @@ Import the projects into CICS Explorer using File &rarr; Import &rarr; General &
 > [!NOTE]
 > If using the egit client, you can just clone the repo and tick the button to import all projects.
 
-### Gradle (command line)
+### Building with Gradle
 
-Run the following in a local command prompt:
+A WAR file is created inside the `cics-java-liberty-link-app/build/libs` directory and a CICS bundle ZIP file inside the `cics-java-liberty-link-bundle/build/distribution` directory.
 
-```shell
-gradle clean build
-```
+The JVM server the CICS bundle is targeted at is controlled through the `cics.jvmserver` property, defined in the [`cics-java-liberty-link-bundle/build.gradle`](cics-java-liberty-link-bundle/build.gradle) file, or alternatively can be set on the command line:
 
-This creates a WAR file inside the `cics-java-liberty-link-app/build/libs` directory and a CICS bundle ZIP file inside the `cics-java-liberty-link-bundle/build/distribution` directory.
+| Tool | Command |
+| ----------- | ----------- |
+| Gradle Wrapper (Linux/Mac) | ```./gradlew clean build``` |
+| Gradle Wrapper (Windows) | ```gradle.bat clean build``` |
+| Gradle (command-line) | ```gradle clean build``` |
+| Gradle (command-line & setting jvmserver) | ```gradle clean build -Pcics.jvmserver=MYJVM``` |
 
-The JVM server the CICS bundle is targeted at is controlled through the `cics.jvmserver` property, defined in the [`cics-java-liberty-link-bundle/build.gradle`](cics-java-liberty-link-bundle/build.gradle) file, or on the command line:
+### Building with Apache Maven
 
-```shell
-gradle clean build -Pcics.jvmserver=MYJVM
-```
-
-### Maven (command line)
-
-
-Run the following in a local command prompt:
-
-```shell
-mvn clean verify
-```
-
-This creates a WAR file inside the `cics-java-liberty-link-app/target` directory and a CICS bundle zIP file inside the `cics-java-liberty-link-bundle/target` directory.
+A WAR file is created inside the `cics-java-liberty-link-app/target` directory and a CICS bundle ZIP file inside the `cics-java-liberty-link-bundle/target` directory.
 
 If building a CICS bundle ZIP the CICS JVM server name for the WAR bundle part should be modified in the 
- `cics.jvmserver` property, defined in [`cics-java-liberty-link-bundle/pom.xml`](cics-java-liberty-link-bundle/pom.xml) file under the `defaultjvmserver` configuration property, or alternatively can be set on the command line as follows.
+ `cics.jvmserver` property, defined in [`cics-java-liberty-link-bundle/pom.xml`](cics-java-liberty-link-bundle/pom.xml) file under the `defaultjvmserver` configuration property, or alternatively can be set on the command line.
 
-```shell
- mvn clean verify -Dcics.jvmserver=MYJVM
- ```
+| Tool | Command |
+| ----------- | ----------- |
+| Maven Wrapper (Linux/Mac) | ```./mvnw clean verify``` |
+| Maven Wrapper (Windows) | ```mvnw.cmd clean verify``` |
+| Maven (command-line) | ```mvn clean verify``` |
+| Maven (command-line & setting jvmserver) | ```mvn clean verify -Dcics.jvmserver=MYJVM``` |
 
 ## Deploying to a Liberty JVM server
 
