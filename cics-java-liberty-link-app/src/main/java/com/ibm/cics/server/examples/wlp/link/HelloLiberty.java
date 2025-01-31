@@ -1,3 +1,5 @@
+Copyright check
+All rights reserved (c)
 /* Licensed Materials - Property of IBM                               */
 /*                                                                    */
 /* SAMPLE                                                             */
