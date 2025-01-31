@@ -9,6 +9,25 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
+  check-copyright:
+    name: check copyright
+    runs-on: ubuntu-latest
+    steps:
+      # Checking out the repository which is to be actioned
+      - uses: actions/checkout@v2
+      # Implementing action on repository
+      - uses: VinnyBabuManjaly/copyright-action@v1.0.0
+        with:
+          CopyrightString: 'Copyright check\nAll rights reserved (c)\n'
+          FileType: '.jsp'
+          Path: 'cics-java-liberty-hello-web/'
+          
+      # Creates pull request with all changes in file
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
   build-mvnw:
     name: Build Maven Wrapper
 
