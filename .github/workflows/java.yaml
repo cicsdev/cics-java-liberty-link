@@ -19,8 +19,8 @@ jobs:
       - uses: VinnyBabuManjaly/copyright-action@v1.0.0
         with:
           CopyrightString: 'Copyright check\nAll rights reserved (c)\n'
-          FileType: '.jsp'
-          Path: 'cics-java-liberty-hello-web/'
+          FileType: '.java'
+          Path: 'cics-java-liberty-link-app/'
           
       # Creates pull request with all changes in file
       - name: Create Pull Request
