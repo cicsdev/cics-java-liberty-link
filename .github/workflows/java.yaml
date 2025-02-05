@@ -9,6 +9,29 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
+  check-copyright:
+    name: Check Copyright
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Copyright
+        env:
+          EXTENSIONS: "*.java"
+          COPYRIGHT_STATEMENT: "/**\n * Copyright IBM Corp. 2016\n */"
+        run: |
+          for ext in $EXTENSIONS; do
+            for file in $(find . -type f -name "$ext" ! -path "cics-java-liberty-link-app/*"); do
+              if ! grep -q "Copyright" "$file"; then
+                echo -e "$COPYRIGHT_STATEMENT\n$(cat "$file")" > "$file"
+              fi
+            done
+          done
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: ${{ github.head_ref }}
+
   build-mvnw:
     name: Build Maven Wrapper
 
