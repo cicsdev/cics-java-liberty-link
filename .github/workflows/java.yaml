@@ -30,7 +30,6 @@ jobs:
                   else
                       # Extract existing copyright line
                       CURRENT_COPYRIGHT=$(grep -o "Copyright IBM Corp. [0-9]\{4\}\(, [0-9]\{4\}\)\?" "$file")
-                      echo "$CURRENT_COPYRIGHT"
                     
                       # Check if LAST_MODIFIED_YEAR is anywhere in current copyright
                       if [[ "$CURRENT_COPYRIGHT" != *"$LAST_MODIFIED_YEAR"* ]]; then
