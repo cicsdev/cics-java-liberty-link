@@ -23,6 +23,7 @@ jobs:
               for file in $(find . -type f -name "$ext" ! -path "cics-java-liberty-link-app/*"); do
                   echo "Processing file: $file"  
                   LAST_MODIFIED_YEAR=$(date -r "$file" +"%Y")
+                  echo "$LAST_MODIFIED_YEAR"
                   
                   if ! grep -q "Copyright" "$file"; then
                       echo -e "/**\n * $BASE_COPYRIGHT\n */\n$(cat "$file")" > "$file"
