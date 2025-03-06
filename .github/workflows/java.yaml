@@ -17,7 +17,7 @@ jobs:
       - name: Check Copyright
         env:
           EXTENSIONS: "*.java"
-          COPYRIGHT_STATEMENT: "/**\n * Copyright IBM Corp. 2016\n */"
+          BASE_COPYRIGHT: "Copyright IBM Corp. 2016"
         run: |
           for ext in "$EXTENSIONS"; do
               for file in $(find . -type f -name "$ext" ! -path "cics-java-liberty-link-app/*"); do
