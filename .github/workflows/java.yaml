@@ -13,10 +13,12 @@ jobs:
     name: Check Copyright
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
       - uses: actions/checkout@v3
-      - name: Check Copyright
         with:
           fetch-depth: 0
+          
+      - name: Check Copyright    
         env:
           EXTENSIONS: "*.java"
           BASE_COPYRIGHT: "Copyright IBM Corp. 2016"
