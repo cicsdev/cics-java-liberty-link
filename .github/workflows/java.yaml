@@ -15,6 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check Copyright
+        with:
+          fetch-depth: 0
         env:
           EXTENSIONS: "*.java"
           BASE_COPYRIGHT: "Copyright IBM Corp. 2016"
@@ -22,7 +24,7 @@ jobs:
           for ext in "$EXTENSIONS"; do
               for file in $(find . -type f -name "$ext" ! -path "cics-java-liberty-link-app/*"); do
                   echo "Processing file: $file"  
-                  LAST_MODIFIED_YEAR=$(git log -1 --format="%ad" --date=format:"%Y" -- "$file")
+                  LAST_MODIFIED_YEAR=$(git log --follow -1 --format="%ad" --date=format:"%Y" -- "$file")
                   
                   if ! grep -q "Copyright" "$file"; then
                       echo -e "/**\n * $BASE_COPYRIGHT\n */\n$(cat "$file")" > "$file"
