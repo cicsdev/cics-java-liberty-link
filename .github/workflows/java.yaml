@@ -17,15 +17,21 @@ jobs:
       - name: Check Copyright
         env:
           EXTENSIONS: "*.java"
-          COPYRIGHT_STATEMENT: "/**\n * Copyright IBM Corp. 2016\n */"
+          BASE_COPYRIGHT: "Copyright IBM Corp. 2016"
         run: |
-          for ext in $EXTENSIONS; do
-            for file in $(find . -type f -name "$ext" ! -path "cics-java-liberty-link-app/*"); do
-              if ! grep -q "Copyright" "$file"; then
-                echo -e "$COPYRIGHT_STATEMENT\n$(cat "$file")" > "$file"
-              fi
-            done
+          for ext in "$EXTENSIONS"; do
+              for file in $(find . -type f -name "$ext" ! -path "cics-java-liberty-link-app/*"); do
+                  echo "Processing file: $file"  
+                  LAST_MODIFIED_YEAR=$(git log -1 --format="%ad" --date=format:"%Y" -- "$file")
+                  
+                  if ! grep -q "Copyright" "$file"; then
+                      echo -e "/**\n * $BASE_COPYRIGHT\n */\n$(cat "$file")" > "$file"
+                  elif ! grep -q "$LAST_MODIFIED_YEAR" "$file"; then
+                      sed -i "s/$BASE_COPYRIGHT/$BASE_COPYRIGHT, $LAST_MODIFIED_YEAR/" "$file"
+                  fi
+              done
           done
+          
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
