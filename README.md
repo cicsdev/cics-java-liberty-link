@@ -62,11 +62,12 @@ You can build the sample in a variety of ways:
   
 
 > [!IMPORTANT]
-> When you initially import the project to your IDE, you might experience local project compile errors. Resolving these errors depends on how you wish to build and deploying the sample. If you are building and deploying through CICS Explorer SDK and 'Export to zFS' you should edit the link-app's Project properties, select 'Java Build Path', on the Libraries tab select 'Classpath', click 'Add Library', select 'CICS with Enterprise Java and Liberty' Library, and choose the appropriate CICS and Enterprise Java versions.
+> The sample comes pre-configured for use with a JDK 1.8 and CICS TS V5.5 Libraries for Java EE 6/7. When you initially import the project to your IDE, if your IDE is not configured for a JDK 1.8, or has CICS Explorer SDK installed, you might experience local project compile errors. To resolve issues you should configure the Project's build-path to add/remove your preferred combination of CICS TS, JDK, and Liberty's Enterprise Java libraries (Java EE or Jakarta EE). Resolving errors might also depend on how you wish to build and deploy the sample. If you are building and deploying through CICS Explorer SDK and 'Export to zFS' you should edit the link-app's Project properties. Select 'Java Build Path', on the Libraries tab select 'Classpath', click 'Add Library', select 'CICS with Enterprise Java and Liberty' Library, and choose the appropriate CICS and Enterprise Java versions.
 If you are building and deploying with Gradle or Maven then you don't necessarily need to fix the local errors, but to do so, you can run a tooling refresh on the link-app project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
 
 > [!TIP]
 > In Eclipse, Gradle (buildship) is able to fully refresh and resolve the local classpath even if the project was previously updated by Maven. However, Maven (m2e) does not currently reciprocate that capability. If you previously refreshed the project with Gradle, you'll need to manually remove the 'Project Dependencies' entry on the Java build-path of your Project Properties to avoid duplication errors when performing a Maven Project Update.
+
 
 ### Building with Eclipse
 
