@@ -3,6 +3,6 @@
     <meta_directives>
         <timestamp>2016-10-28T13:21:46.339+01:00</timestamp>
     </meta_directives>
-    <define name="CJLL" path="CJLL.transaction" type="http://www.ibm.com/xmlns/prod/cics/bundle/TRANSACTION"/>
+    <define name="WLPH" type="http://www.ibm.com/xmlns/prod/cics/bundle/TRANSACTION" path="WLPH.transaction"/>
     <define name="cics-java-liberty-link-app" type="http://www.ibm.com/xmlns/prod/cics/bundle/WARBUNDLE" path="cics-java-liberty-link-app.warbundle"/>
 </manifest>

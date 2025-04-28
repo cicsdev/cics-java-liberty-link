@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                
+                    
+    
     
     
     <wb-module deploy-name="cics-java-liberty-link-app">
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated_tests"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-                                
-        
-        
-        <property name="java-output-path" value="/cics-java-liberty-link-app/build/classes"/>
                 
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated_tests"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
+                        
+        
         <property name="context-root" value="cics-java-liberty-link-app"/>
-                            
+        <property name="java-output-path" value="/cics-java-liberty-link-app/bin/default"/>
+                                    
+    
     
     
     </wb-module>
-            
+                
+
 
 
 </project-modules>

@@ -4,4 +4,4 @@ Note: the HELLOWLP program is automatically defined when the class HelloLiberty 
 Liberty JVM server.
 -->
 <cicsdefinitiontransaction name="WLPH" program="HELLOWLP"
-    description="Runs the Enterprise Java CICS program defined in HelloLiberty" />
+    description="Runs the Enterprise Java program defined in HelloLiberty" />
