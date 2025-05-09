@@ -9,6 +9,13 @@ group = 'com.ibm.cicsdev'
 archivesBaseName='cics-java-liberty-link'
 version = '1.0.0'
 
+
+java
+{
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 // If in Eclipse, add Javadoc to the local project classpath
 eclipse 
 {

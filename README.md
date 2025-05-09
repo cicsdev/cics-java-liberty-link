@@ -7,7 +7,7 @@ A sample CICS Java application showing use of the `com.ibm.cics.server.invocatio
 A set of sample components that demonstrate how to annotate a POJO packaged in a WAR (Web application), deploy it to a Liberty JVM server, and then LINK to (or call) that POJO from a CICS program or CICS transaction.
 
 - [cics-java-liberty-link](./cics-java-liberty-link) - Top-level project.
-- [cics-java-liberty-link-app](./cics-java-liberty-link-app) - Web project.
+- [cics-java-liberty-link-app](./cics-java-liberty-link-app) - Web application project.
 - [cics-java-liberty-link-bundle](./cics-java-liberty-link-bundle) - CICS bundle plug-in based project, contains Web application and WLPH transaction bundle-parts. Use with Gradle and Maven builds.
 - [etc/eclipse_projects/com.ibm.cics.server.examples.wlp.link.bundle](./etc/eclipse_projects/com.ibm.cics.server.examples.wlp.link.bundle) - CICS Explorer based CICS bundle project, contains Web application and WLPH transaction bundle-parts. Use with CICS Explorer 'Export to zFS' deployment capability.
 - [etc/config/liberty/server.xml](./etc/config/liberty/server.xml) - A template `server.xml` demonstrating the minimum configuration required to run the sample.
@@ -15,10 +15,10 @@ A set of sample components that demonstrate how to annotate a POJO packaged in a
 ## Prerequisites
 - CICS TS V5.5 or later
 - Java SE 1.8 or later on the workstation
-- One of the following:
+- One of the following on your workstation:
     - Eclipse with the IBM CICS SDK for Java EE, Jakarta EE and Liberty
-    - An IDE of your choice that supports Gradle or Maven
-    - A command line version of Gradle or Apache Maven on the workstation
+    - An IDE of your choice that supports Gradle or Maven (or can run the Wrappers)
+    - A command line, to run the Wrappers or to invoke a locally installed version of Gradle or Maven
 
 ## Downloading
 
@@ -58,15 +58,17 @@ Maven (POM.xml):
 You can build the sample in a variety of ways:
 - Using the implicit compile/build of the Eclipse based CICS Explorer SDK
 - Using the built-in Gradle or Maven support of your IDE (For example: *buildship* or *m2e* in Eclipse which integrate with the "Run As..." menu.)
-- or you can build it from the command line with Gradle or Maven
+- Using the supplied Gradle or Maven Wrapper scripts (no requirement for an IDE or Gradle/Maven install)
+- or you can build it from the command line if you have Gradle or Maven installed on your workstation
   
 
 > [!IMPORTANT]
-> When you initially import the project to your IDE, you might experience local project compile errors. Resolving these errors depends on how you wish to build and deploying the sample. If you are building and deploying through CICS Explorer SDK and 'Export to zFS' you should edit the link-app's Project properties, select 'Java Build Path', on the Libraries tab select 'Classpath', click 'Add Library', select 'CICS with Enterprise Java and Liberty' Library, and choose the appropriate CICS and Enterprise Java versions.
-If you are building and deploying with Gradle or Maven then you don't necessarily need to fix the local errors, but to do so, you can run a tooling refresh on the link-app project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
+> The sample comes pre-configured for use with a JDK 1.8 and CICS TS V5.5 Libraries for Java EE 6/7. When you initially import the project to your IDE, if your IDE is not configured for a JDK 1.8, or does not have CICS Explorer SDK installed, you might experience local project compile errors. To resolve issues you should configure the Project's build-path to add/remove your preferred combination of CICS TS, JDK, and Liberty's Enterprise Java libraries (Java EE or Jakarta EE). Resolving errors might also depend on how you wish to build and deploy the sample. If you are building and deploying through CICS Explorer SDK and 'Export to zFS' you should edit the link-app's Project properties. Select 'Java Build Path', on the Libraries tab select 'Classpath', click 'Add Library', select 'CICS with Enterprise Java and Liberty' Library, and choose the appropriate CICS and Enterprise Java versions.
+If you are building and deploying with Gradle or Maven then you don't necessarily need to fix the local errors, but to do so, you can do as above, or you can run a tooling refresh on the link-app project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
 
 > [!TIP]
 > In Eclipse, Gradle (buildship) is able to fully refresh and resolve the local classpath even if the project was previously updated by Maven. However, Maven (m2e) does not currently reciprocate that capability. If you previously refreshed the project with Gradle, you'll need to manually remove the 'Project Dependencies' entry on the Java build-path of your Project Properties to avoid duplication errors when performing a Maven Project Update.
+
 
 ### Building with Eclipse
 
