@@ -70,11 +70,11 @@ If you are building and deploying with Gradle or Maven then you don't necessaril
 > In Eclipse, Gradle (buildship) is able to fully refresh and resolve the local classpath even if the project was previously updated by Maven. However, Maven (m2e) does not currently reciprocate that capability. If you previously refreshed the project with Gradle, you'll need to manually remove the 'Project Dependencies' entry on the Java build-path of your Project Properties to avoid duplication errors when performing a Maven Project Update.
 
 
-### Building with Eclipse
+### Option 1: Building with Eclipse
 
 If you are using the Egit client to clone the repo, remember to tick the button to import all projects. Otherwise, you should manually Import the projects into CICS Explorer using File &rarr; Import &rarr; General &rarr; Existing projects into workspace, then follow the error resolution advice above.
 
-### Building with Gradle
+### Option 2: Building with Gradle
 
 For a complete build you should run the settings.gradle file in the top-level 'cics-java-liberty-link' directory which is designed to invoke the individual build.gradle files for each project. 
 
@@ -102,7 +102,7 @@ gradle clean build
 gradle clean build -Pcics.jvmserver=MYJVM
 ```
 
-### Building with Apache Maven
+### Option 3: Building with Apache Maven
 
 For a complete build you should run the pom.xml file in the top-level 'cics-java-liberty-link' directory. A WAR file is created inside the `cics-java-liberty-link-app/target` directory and a CICS bundle ZIP file inside the `cics-java-liberty-link-bundle/target` directory.
 
