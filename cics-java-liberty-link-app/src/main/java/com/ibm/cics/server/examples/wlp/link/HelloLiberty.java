@@ -9,6 +9,8 @@
 /*                                                                    */
 package com.ibm.cics.server.examples.wlp.link;
 
+import java.io.PrintWriter;
+
 import com.ibm.cics.server.Channel;
 import com.ibm.cics.server.CicsException;
 import com.ibm.cics.server.Container;
@@ -66,8 +68,10 @@ public class HelloLiberty
 	@CICSProgram(PROGRAM_NAME) // This method can be invoked by EXEC CICS LINK PROGRAM(HELLOWLP)
 	public void printMessage()
 	{
-		try
+		// Direct access to the 'out' stream should be replaced with the getter method at higher versions of JCICS
+		try (PrintWriter out = currentTask.out)
 		{
+			out.println();
 			StringBuilder sb = new StringBuilder();
 			final String name = getName();
 			sb.append("Hello ")
@@ -75,6 +79,7 @@ public class HelloLiberty
 					.append(" from Liberty server ")
 					.append(JVMSERVER_NAME);
 
+			out.println(sb.toString());
 			System.out.println(sb.toString());
 		} catch (CicsException e)
 		{
