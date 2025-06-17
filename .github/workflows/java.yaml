@@ -10,50 +10,17 @@ on:
 
 jobs:
   check-copyright:
-    name: Check Copyright
     runs-on: ubuntu-latest
+    name: Check Copyright
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - id: copyright-action
+        uses: cicsdev/.github/.github/actions/samples-copyright-checker@139edd8dc23af7f4f7dd9afe4d56a1053fe426a7
         with:
-          fetch-depth: 0
-          
-      - name: Check Copyright
-        env:
-          EXTENSIONS: "*.java"
-          BASE_COPYRIGHT: "Copyright IBM Corp. 2016"
-        run: |
-          for ext in "$EXTENSIONS"; do
-              for file in $(find . -type f -name "$ext" -path "./cics-java-liberty-link-app/*"); do
-                  echo "Processing file: $file"  
-                  
-                  LAST_MODIFIED_YEAR=$(git log --follow -1 --format="%ad" --date=format:"%Y" -- "$file")
-
-                  if ! grep -q "Copyright" "$file"; then
-                      echo -e "/**\n * $BASE_COPYRIGHT\n */\n$(cat "$file")" > "$file"
-                  else
-                      # Extract existing copyright line
-                      CURRENT_COPYRIGHT=$(grep -o "Copyright IBM Corp. [0-9]\{4\}\(, [0-9]\{4\}\)\?" "$file")
-                    
-                      # Check if LAST_MODIFIED_YEAR is anywhere in current copyright
-                      if [[ "$CURRENT_COPYRIGHT" != *"$LAST_MODIFIED_YEAR"* ]]; then
-                          # Check if copyright has two years
-                          if [[ "$CURRENT_COPYRIGHT" =~ ,\ [0-9]{4}$ ]]; then
-                              # If there is already a second year, replace it
-                              sed -i "s/$BASE_COPYRIGHT, [0-9]\{4\}/$BASE_COPYRIGHT, $LAST_MODIFIED_YEAR/" "$file"
-                          else
-                              # If there is no second year, add it
-                              sed -i "s/$BASE_COPYRIGHT/$BASE_COPYRIGHT, $LAST_MODIFIED_YEAR/" "$file"
-                          fi
-                      fi
-                  fi
-              done
-          done
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
+          directory: './cics-java-liberty-link-app/'
+          file-extensions: '*.java'
+          base-copyright: 'Copyright IBM Corp. 2025'
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: ${{ github.head_ref }}
 
   build-mvnw:
     name: Build Maven Wrapper
