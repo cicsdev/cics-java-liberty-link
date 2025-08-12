@@ -31,13 +31,14 @@ repositories
 }
 
 dependencies 
-{
-    compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409") // CICS TS V5.5 Maven BOM 
-      
-    // Don't include JCICS in the final build (no need for version because we have BOM)
+{   
+    
+    def bom = "com.ibm.cics:com.ibm.cics.ts.bom:5.5-20250812140737-PH63855" 	
+		
+    compileOnly enforcedPlatform(bom)
+    annotationProcessor enforcedPlatform(bom)
+        
     compileOnly("com.ibm.cics:com.ibm.cics.server")
+    annotationProcessor("com.ibm.cics:com.ibm.cics.server.invocation")    
     compileOnly("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
-
-    // Use the V6 annotation processor as this supports Java 11
-    annotationProcessor("com.ibm.cics:com.ibm.cics.server.invocation:6.1")
 }
