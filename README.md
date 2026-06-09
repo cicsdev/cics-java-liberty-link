@@ -1,5 +1,5 @@
 # Sample: cics-java-liberty-link
-[![Build](https://github.com/cicsdev/cics-java-liberty-link/actions/workflows/java.yaml/badge.svg)](https://github.com/cicsdev/cics-java-liberty-link/actions/workflows/java.yaml)
+[![Build](https://github.com/cicsdev/cics-java-liberty-link/actions/workflows/build.yaml/badge.svg)](https://github.com/cicsdev/cics-java-liberty-link/actions/workflows/build.yaml)
 
 A sample CICS Java application showing use of the `com.ibm.cics.server.invocation.CICSProgram` annotation to link to an Enterprise Java program running in a Liberty JVM server.
 
