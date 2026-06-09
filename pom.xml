@@ -15,7 +15,7 @@
         com.ibm.cics.server.invocation.CICSProgram annotation for Link to Liberty.</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <cics.jvmserver>DFHWLP</cics.jvmserver>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -38,4 +38,20 @@
         <module>cics-java-liberty-link-app</module>
         <module>cics-java-liberty-link-bundle</module>
     </modules>
+
+    <!-- ================================================================ -->
+    <!-- Build Configuration                                              -->
+    <!-- ================================================================ -->
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin with release parameter -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <release>${java.version}</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
