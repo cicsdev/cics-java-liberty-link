@@ -59,10 +59,9 @@ jobs:
         with:
           java-version: ${{ matrix.jdk }}
           distribution: "semeru"
-          cache: maven
-      - name: Build with Maven
-        run: ./mvnw --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} verify          
-      
+      - name: Build with Maven Wrapper
+        run: ./mvnw --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} package
+
   build-gradle:
     name: Build Gradle
     
@@ -85,8 +84,8 @@ jobs:
       run: gradle build -Pjava_version=${{ matrix.jdk }}
 
   build-gradlew:
-    name: Build Gradle Wrapper
-
+    name: Build Gradle wrapper
+    
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -99,6 +98,4 @@ jobs:
         java-version: ${{ matrix.jdk }}
         distribution: 'semeru'
     - name: Build with Gradle Wrapper
-      run: ./gradlew clean build -Pjava_version=${{ matrix.jdk }}     
-
-# Made with Bob
+      run: ./gradlew build -Pjava_version=${{ matrix.jdk }}
